@@ -1,7 +1,11 @@
 var express = require('express');
+var util = require('./util');
 var Engine = require('./engine');
 
 var Server = function(options) {
+
+  this._options = util.extend({
+  }, options);
 
   this._app = express();
 
