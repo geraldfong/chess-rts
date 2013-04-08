@@ -1,9 +1,20 @@
 var express = require('express');
-var app = express();
+var Engine = require('./engine');
 
-app.get('/', function(req, res) {
-  res.send("Hi");
-});
+var Server = function(options) {
 
-app.listen(3000);
-console.log("Listening on 3000");
+  this._app = express();
+
+  this._engine = new Engine();
+
+  this._app.get('/', function(req, res) {
+    res.send("Hi");
+  });
+
+  this._app.listen(3000);
+  console.log("Listening on 3000");
+}
+
+var server = new Server();
+
+module.exports = Server;
