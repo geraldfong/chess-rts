@@ -12,16 +12,18 @@ function Engine(options) {
 
   this._moveQueue = [];
 
+  var self = this;
+
   setInterval(function() {
-    var move = this.getNextMove();
+    var move = self.getNextMove();
     if (move != null) {
-      var newLoc = this.execMove(move);
+      var newLoc = self.execMove(move);
     }
-    for (var i = 0; i < this._board._pieces.length; i++) {
-      var piece = this._board._pieces[i];
-      this.updatePos(piece);
+    for (var i = 0; i < self._board._pieces.length; i++) {
+      var piece = self._board._pieces[i];
+      self.updatePos(piece);
     }
-  }, clockSpeed);
+  }, this._options.clockSpeed);
 }
 
 Engine.prototype.getNextMove = function() {
@@ -64,7 +66,7 @@ Engine.prototype.updatePos = function(piece) {
     return;
   }
 
-  var destPiece = this._board.getPieceAt(x, y);
+  var destPiece = this._board.getPieceAt(piece._x, piece._y);
   if (destPiece == null) {
     return;
   }

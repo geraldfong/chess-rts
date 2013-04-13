@@ -55,7 +55,7 @@ var Board = function (options) {
 
 }
 
-Board.prototype.getPiece(color, id) {
+Board.prototype.getPiece = function(color, id) {
   var piece = null;
   for (var i = 0; i < this._pieces.length; i++) {
     var curPiece = this._pieces[i];
@@ -67,7 +67,7 @@ Board.prototype.getPiece(color, id) {
   return piece;
 }
 
-Board.prototype.getPieceAt(x, y) {
+Board.prototype.getPieceAt = function(x, y) {
   var piece = null;
   for (var i = 0; i < this._pieces.length; i++) {
     var curPiece = this._pieces[i];
@@ -79,7 +79,7 @@ Board.prototype.getPieceAt(x, y) {
   return piece;
 }
 
-Board.prototype.capturePiece(piece) {
+Board.prototype.capturePiece = function(piece) {
   this.takenPieces = this.pieces.splice(this.pieces.indexOf(piece), 1);
 }
 
